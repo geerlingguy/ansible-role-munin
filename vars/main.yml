@@ -1,0 +1,28 @@
+---
+munin_dbdir: /var/lib/munin
+munin_htmldir: /var/www/html/munin
+munin_logdir: /var/log/munin
+munin_rundir: /var/run/munin
+
+munin_html_strategy: cron
+
+munin_max_processes: 12
+
+munin_admin_user: munin
+munin_admin_password: munin
+
+# Will be translated into:
+# [host]
+#   address: [name]
+#   [extra.0]
+#   [extra.1]
+#   [...]
+#
+# Note that `name` can be hostname, or group + hostname, for example:
+# [example.com;foo.example.com]
+munin_hosts:
+  - {
+    name: "localhost",
+    address: "127.0.0.1",
+    extra: ["use_node_name yes"]
+  }

@@ -1,0 +1,23 @@
+---
+- name: Ensure python-passlib is installed (RedHat).
+  yum: pkg=python-passlib state=installed
+
+- name: Ensure munin is installed (RedHat).
+  yum: pkg=munin state=installed
+
+- name: Copy munin configurations.
+  template: >
+    src={{ item.src }}
+    dest={{ item.dest }}
+    owner=root group=root mode=644
+  with_items:
+    - { src: munin.conf.j2, dest: /etc/munin/munin.conf }
+    - { src: hosts.conf.j2, dest: /etc/munin/conf.d/hosts.conf }
+
+- name: Create munin user via htpasswd.
+  htpasswd: >
+    create=yes
+    name={{ munin_admin_user }}
+    password={{ munin_admin_password }}
+    path=/etc/munin/munin-htpasswd
+    state=present

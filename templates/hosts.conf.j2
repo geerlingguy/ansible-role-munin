@@ -1,0 +1,11 @@
+# Munin hosts.
+{% for host in munin_hosts %}
+[{{ host.name }}]
+    address {{ host.address }}
+{% if host.extra %}
+{% for extra in host.extra %}
+    {{ extra }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
