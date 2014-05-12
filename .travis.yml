@@ -29,6 +29,3 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-
-  # Check if munin is responding on port 4949.
-  - nc -z localhost 4949
