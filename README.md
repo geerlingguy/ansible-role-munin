@@ -2,23 +2,54 @@
 
 [![Build Status](https://travis-ci.org/geerlingguy/ansible-role-munin.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-munin)
 
-Installs munin, a monitoring system, on RedHat/CentOS.
+Installs munin, a monitoring system, on RedHat/CentOS or Debian/Ubuntu Linux servers.
 
 ## Requirements
 
-None.
+If you are running a RedHat-based distribution, you need to install the EPEL repository, which can be simply installed via the `geerlingguy.repo-epel` role.
+
+If you would like to view munin's graphs and output via HTTP, you will need an HTTP server like Apache or Nginx running.
 
 ## Role Variables
 
 Available variables are listed below, along with default values (see `vars/main.yml`):
 
-    TODO
+    munin_dbdir: /var/lib/munin
+    munin_htmldir: /var/www/html/munin
+    munin_logdir: /var/log/munin
+    munin_rundir: /var/run/munin
+    munin_includedir: /etc/munin/conf.d
+
+Some default locations for Munin-generated files, configurations, logs, etc.
+
+    munin_html_strategy: cron
+    munin_max_processes: 12
+
+See the official Munin documentation for [munin.conf](http://munin.readthedocs.org/en/latest/reference/munin.conf.html) for more information on these and other optional directives.
+
+    munin_admin_user: munin
+    munin_admin_password: munin
+
+These values will be used to generate a user via htpasswd under which the munin pages will be password protected with basic HTTP authentication.
+
+    munin_hosts:
+      - {
+        name: "localhost",
+        address: "127.0.0.1",
+        extra: ["use_node_name yes"]
+      }
+
+A listing of hosts to which munin will connect and monitor. Each item in the list will be added to your munin configuration like the following (assuming you're using the above example):
+
+    [localhost]
+      address: 127.0.0.1
+      use_node_name yes
+
+See documentation for [Munin Node Definitions](http://munin.readthedocs.org/en/latest/reference/munin.conf.html#node-definitions) for more details as to what values to use here.
 
 ## Dependencies
 
-  - geerlingguy.repo-epel
-
-Additionally, if you'd like to view the graphs via HTTP, you will need a server like Apache or Nginx running, to serve the munin-generated HTML and graphs.
+None.
 
 ## Example Playbook
 

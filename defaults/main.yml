@@ -1,8 +1,16 @@
 ---
+munin_packages:
+  - python-passlib
+  - munin
+
+munin_conf_d_directory: /etc/munin/conf.d
+
 munin_dbdir: /var/lib/munin
 munin_htmldir: /var/www/html/munin
 munin_logdir: /var/log/munin
 munin_rundir: /var/run/munin
+
+munin_includedir: /etc/munin/conf.d
 
 munin_html_strategy: cron
 

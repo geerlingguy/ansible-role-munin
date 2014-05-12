@@ -1,0 +1,6 @@
+---
+munin_conf_d_directory: /etc/munin/munin-conf.d
+
+munin_htmldir: /var/cache/munin/www
+
+munin_includedir: /etc/munin/munin-conf.d

@@ -1,9 +1,16 @@
 ---
-- name: Ensure python-passlib is installed (RedHat).
-  yum: pkg=python-passlib state=installed
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Ensure munin is installed (RedHat).
-  yum: pkg=munin state=installed
+- name: Install required packages for munin (RedHat).
+  yum: "pkg={{ item }} state=installed"
+  with_items: munin_packages
+  when: ansible_os_family == 'RedHat'
+
+- name: Install required packages for munin (Debian).
+  apt: "pkg={{ item }} state=installed"
+  with_items: munin_packages
+  when: ansible_os_family == 'Debian'
 
 - name: Copy munin configurations.
   template: >
@@ -12,7 +19,7 @@
     owner=root group=root mode=644
   with_items:
     - { src: munin.conf.j2, dest: /etc/munin/munin.conf }
-    - { src: hosts.conf.j2, dest: /etc/munin/conf.d/hosts.conf }
+    - { src: hosts.conf.j2, dest: "{{ munin_conf_d_directory }}/hosts.conf" }
 
 - name: Create munin user via htpasswd.
   htpasswd: >

@@ -18,7 +18,7 @@ tmpldir  /etc/munin/templates
 # cgitmpdir @@CGITMPDIR@@
 
 # (Exactly one) directory to include all files from.
-includedir /etc/munin/conf.d
+includedir {{ munin_includedir }}
 
 # You can choose the time reference for "DERIVE" like graphs, and show
 # "per minute", "per hour" values instead of the default "per second"
