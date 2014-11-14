@@ -34,3 +34,11 @@ munin_hosts:
     address: "127.0.0.1",
     extra: ["use_node_name yes"]
   }
+
+munin_alerts: []
+#  - {
+#    name: "John Doe",
+#    email: "johndoe@example.com",
+#    subject: "Munin-notification for ${var:group} :: ${var:host}",
+#    level: "warning critical"
+#   }

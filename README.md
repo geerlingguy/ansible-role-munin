@@ -47,6 +47,16 @@ A listing of hosts to which munin will connect and monitor. Each item in the lis
 
 See documentation for [Munin Node Definitions](http://munin.readthedocs.org/en/latest/reference/munin.conf.html#node-definitions) for more details as to what values to use here.
 
+You can enable mail alerts by adding :
+
+    munin_alerts:
+      - {
+        name: "John Doe",
+        email: "johndoe@example.com",
+        subject: "Munin-notification for ${var:group} :: ${var:host}",
+        level: "warning critical"
+      }
+
 ## Dependencies
 
 None.
