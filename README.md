@@ -51,7 +51,7 @@ You can enable mail alerts by adding :
 
     munin_alerts:
       - {
-        name: "John Doe",
+        name: "JohnDoe",
         email: "johndoe@example.com",
         subject: "Munin-notification for ${var:group} :: ${var:host}",
         level: "warning critical"
