@@ -74,6 +74,15 @@ max_processes {{ munin_max_processes }}
 # something changes (OK -> WARNING, CRITICAL -> OK, etc)
 #contact.someuser.command mail -s "Munin notification" somejuser@fnord.comm
 #contact.anotheruser.command mail -s "Munin notification" anotheruser@blibb.comm
+
+{% if munin_alerts %}
+{% for contact in munin_alerts %}
+contacts {{ contact.name }}
+contact.{{ contact.name }}.command mail -s "{{ contact.subject }}" {{ contact.email }}
+contact.{{ contact.name }}.always_send {{ contact.level }}
+{% endfor %}
+{% endif %}
+
 #
 # For those with Nagios, the following might come in handy. In addition,
 # the services must be defined in the Nagios server as well.
