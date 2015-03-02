@@ -13,6 +13,7 @@ munin_rundir: /var/run/munin
 munin_includedir: /etc/munin/conf.d
 
 munin_html_strategy: cron
+munin_cron_job: present
 
 munin_max_processes: 12
 

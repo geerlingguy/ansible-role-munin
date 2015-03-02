@@ -27,10 +27,14 @@ Some default locations for Munin-generated files, configurations, logs, etc.
 
 See the official Munin documentation for [munin.conf](http://munin.readthedocs.org/en/latest/reference/munin.conf.html) for more information on these and other optional directives.
 
+    munin_cron_job: present
+
+Determines whether the munin cron job (which runs every 5 minutes) should be active. By setting this to `absent`, you can leave munin installed and configured on your server but effectively disable it. This allows quick enabling or disabling for munin monitoring.
+
     munin_admin_user: munin
     munin_admin_password: munin
 
-These values will be used to generate a user via htpasswd under which the munin pages will be password protected with basic HTTP authentication.
+These values will be used to generate a user via htpasswd under which the munin pages will be password protected with basic HTTP authentication. (*Note*: This method only works when Munin is running under default Apache configurations; if you use Nginx or a customized Apache server, you will need to configure authentication on your own).
 
     munin_hosts:
       - {

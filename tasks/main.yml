@@ -28,3 +28,10 @@
     password={{ munin_admin_password }}
     path=/etc/munin/munin-htpasswd
     state=present
+
+- name: Enable or disable the munin cron job.
+  lineinfile:
+    dest: /etc/cron.d/munin
+    state: "{{ munin_cron_job }}"
+    regexp: "^\\*/5 \\* \\* \\* \\*"
+    line: "*/5 * * * *     munin test -x /usr/bin/munin-cron && /usr/bin/munin-cron"
