@@ -69,7 +69,7 @@ None.
 
     - hosts: servers
       roles:
-        - { role: geerlingguy.munin }
+        - geerlingguy.munin
 
 ## License
 
