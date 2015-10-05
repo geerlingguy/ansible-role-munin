@@ -20,6 +20,7 @@
   with_items:
     - { src: munin.conf.j2, dest: /etc/munin/munin.conf }
     - { src: hosts.conf.j2, dest: "{{ munin_conf_d_directory }}/hosts.conf" }
+  notify: restart munin
 
 - name: Create munin user via htpasswd.
   htpasswd: >
