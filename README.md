@@ -12,7 +12,7 @@ If you would like to view munin's graphs and output via HTTP, you will need an H
 
 ## Role Variables
 
-Available variables are listed below, along with default values (see `vars/main.yml`):
+Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     munin_dbdir: /var/lib/munin
     munin_htmldir: /var/www/html/munin
