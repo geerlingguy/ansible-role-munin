@@ -4,12 +4,12 @@
 
 - name: Install required packages for munin (RedHat).
   yum: "name={{ item }} state=present"
-  with_items: munin_packages
+  with_items: "{{ munin_packages }}"
   when: ansible_os_family == 'RedHat'
 
 - name: Install required packages for munin (Debian).
   apt: "name={{ item }} state=present"
-  with_items: munin_packages
+  with_items: "{{ munin_packages }}"
   when: ansible_os_family == 'Debian'
 
 - name: Copy munin configurations.
