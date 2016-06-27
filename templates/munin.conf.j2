@@ -29,7 +29,7 @@ includedir {{ munin_includedir }}
 # documentation.
 # Since 2.0, munin-graph has been rewritten to use the cgi code.
 # It is single threaded *by design* now.
-graph_strategy cron
+graph_strategy {{ munin_cgi_strategy }}
 
 # munin-cgi-graph is invoked by the web server up to very many times at the
 # same time.  This is not optimal since it results in high CPU and memory
