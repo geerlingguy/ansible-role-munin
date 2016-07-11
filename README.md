@@ -59,8 +59,13 @@ You can enable mail alerts by adding :
         name: "JohnDoe",
         email: "johndoe@example.com",
         subject: "Munin-notification for ${var:group} :: ${var:host}",
-        level: "warning critical"
       }
+
+Optional vars on `munin_alerts`:
+- `level`: could be warning and/or critical
+- `text`: notification text to use on alerts
+
+See documentation for [Munin Alert](http://munin.readthedocs.io/en/latest/tutorial/alert.html) for more details as to what values to use here.
 
 ## Dependencies
 
