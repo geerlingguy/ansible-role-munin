@@ -79,7 +79,12 @@ max_processes {{ munin_max_processes }}
 {% for contact in munin_alerts %}
 contacts {{ contact.name }}
 contact.{{ contact.name }}.command mail -s "{{ contact.subject }}" {{ contact.email }}
+{% if contact.level is defined %}
 contact.{{ contact.name }}.always_send {{ contact.level }}
+{% endif %}
+{% if contact.text is defined %}
+contact.{{ contact.name }}.text {{ contact.text }}
+{% endif %}
 {% endfor %}
 {% endif %}
 
