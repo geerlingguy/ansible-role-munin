@@ -23,6 +23,7 @@ Available variables are listed below, along with default values (see `defaults/m
 Some default locations for Munin-generated files, configurations, logs, etc.
 
     munin_html_strategy: cron
+    munin_graph_strategy: cron
     munin_max_processes: 12
 
 See the official Munin documentation for [munin.conf](http://munin.readthedocs.org/en/latest/reference/munin.conf.html) for more information on these and other optional directives.
