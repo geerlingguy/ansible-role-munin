@@ -1,2 +1,6 @@
 *.retry
 tests/test.sh
+
+# Ignore vagrant dirs
+tests/vagrant/.vagrant
+tests/vagrant/roles
