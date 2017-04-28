@@ -1,0 +1,11 @@
+---
+
+- hosts: ansible-vm
+  roles:
+    # Add EPEL repository is the OS distro is RedHat-based.
+    - role: ansible-repo-epel
+      when: ansible_os_family == 'RedHat'
+      become: true
+    # Install Munin
+    - role: ansible-munin
+      become: true
