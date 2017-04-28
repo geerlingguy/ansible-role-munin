@@ -1,0 +1,7 @@
+
+---
+
+# From Github
+- src: https://github.com/abessifi/ansible-repo-epel.git
+  scm: git
+  version: "master"
