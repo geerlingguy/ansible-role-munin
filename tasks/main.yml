@@ -27,7 +27,7 @@
 
 - name: Create munin user via htpasswd.
   htpasswd:
-    create: yes
+    create: true
     name: "{{ munin_admin_user }}"
     password: "{{ munin_admin_password }}"
     path: /etc/munin/munin-htpasswd
