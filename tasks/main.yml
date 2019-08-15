@@ -3,13 +3,11 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Install required packages for munin (RedHat).
-  yum: "name={{ item }} state=present"
-  with_items: "{{ munin_packages }}"
+  yum: "name={{ munin_packages }} state=present"
   when: ansible_os_family == 'RedHat'
 
 - name: Install required packages for munin (Debian).
-  apt: "name={{ item }} state=present"
-  with_items: "{{ munin_packages }}"
+  apt: "name={{ munin_packages }} state=present"
   when: ansible_os_family == 'Debian'
 
 - name: Copy munin configurations.
