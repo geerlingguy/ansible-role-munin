@@ -14,6 +14,12 @@ If you would like to view munin's graphs and output via HTTP, you will need an H
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
+    munin_packages:
+      - python-passlib
+      - munin
+
+Packages installed for Munin. If you are running Python 3, you should override this variable and set the first item to `python3-passlib`.
+
     munin_dbdir: /var/lib/munin
     munin_htmldir: /var/www/html/munin
     munin_logdir: /var/log/munin
@@ -52,15 +58,13 @@ A listing of hosts to which munin will connect and monitor. Each item in the lis
 
 See documentation for [Munin Node Definitions](http://munin.readthedocs.org/en/latest/reference/munin.conf.html#node-definitions) for more details as to what values to use here.
 
-You can enable mail alerts by adding :
-
     munin_alerts:
-      - {
-        name: "JohnDoe",
+      - name: "JohnDoe",
         email: "johndoe@example.com",
         subject: "Munin-notification for ${var:group} :: ${var:host}",
         level: "warning critical"
-      }
+
+You can configure email alerts using the `munin_alerts` variable.
 
 ## Dependencies
 
