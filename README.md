@@ -44,11 +44,9 @@ Determines whether the munin cron job (which runs every 5 minutes) should be act
 These values will be used to generate a user via htpasswd under which the munin pages will be password protected with basic HTTP authentication. (*Note*: This method only works when Munin is running under default Apache configurations; if you use Nginx or a customized Apache server, you will need to configure authentication on your own).
 
     munin_hosts:
-      - {
-        name: "localhost",
-        address: "127.0.0.1",
+      - name: "localhost"
+        address: "127.0.0.1"
         extra: ["use_node_name yes"]
-      }
 
 A listing of hosts to which munin will connect and monitor. Each item in the list will be added to your munin configuration like the following (assuming you're using the above example):
 
@@ -59,9 +57,9 @@ A listing of hosts to which munin will connect and monitor. Each item in the lis
 See documentation for [Munin Node Definitions](http://munin.readthedocs.org/en/latest/reference/munin.conf.html#node-definitions) for more details as to what values to use here.
 
     munin_alerts:
-      - name: "JohnDoe",
-        email: "johndoe@example.com",
-        subject: "Munin-notification for ${var:group} :: ${var:host}",
+      - name: "JohnDoe"
+        email: "johndoe@example.com"
+        subject: "Munin-notification for ${var:group} :: ${var:host}"
         level: "warning critical"
 
 You can configure email alerts using the `munin_alerts` variable.

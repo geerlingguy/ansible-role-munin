@@ -31,12 +31,12 @@ munin_admin_password: munin
 # Note that `name` can be hostname, or group + hostname, for example:
 # [example.com;foo.example.com]
 munin_hosts:
-  - name: "localhost",
-    address: "127.0.0.1",
+  - name: "localhost"
+    address: "127.0.0.1"
     extra: ["use_node_name yes"]
 
 munin_alerts: []
-#  - name: "JohnDoe",
-#    email: "johndoe@example.com",
-#    subject: "Munin-notification for ${var:group} :: ${var:host}",
+#  - name: "JohnDoe"
+#    email: "johndoe@example.com"
+#    subject: "Munin-notification for ${var:group} :: ${var:host}"
 #    level: "warning critical"
