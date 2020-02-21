@@ -3,14 +3,16 @@
   hosts: all
   become: true
 
-  vars:
-    munin_packages:
-      - python3-passlib
-      - munin
-
   pre_tasks:
     - name: Update apt cache.
       apt: update_cache=true cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+
+    - name: Override munin_packages on Ubuntu.
+      set_fact:
+        munin_packages:
+          - python3-passlib
+          - munin
       when: ansible_os_family == 'Debian'
 
   roles:
