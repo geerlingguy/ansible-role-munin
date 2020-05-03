@@ -36,4 +36,4 @@
     dest: /etc/cron.d/munin
     state: "{{ munin_cron_job }}"
     regexp: "^\\*/5 \\* \\* \\* \\*"
-    line: "*/5 * * * *     munin test -x /usr/bin/munin-cron && /usr/bin/munin-cron"
+    line: "*/5 * * * *     munin if [ -x /usr/bin/munin-cron ]; then /usr/bin/munin-cron; fi"
