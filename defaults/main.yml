@@ -1,8 +1,4 @@
 ---
-munin_packages:
-  - python-passlib
-  - munin
-
 munin_conf_d_directory: /etc/munin/conf.d
 
 munin_dbdir: /var/lib/munin
