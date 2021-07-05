@@ -1,13 +1,13 @@
 ---
-- name: gather required munin packages
-  set_fact:
-    munin_required_packages: "{{ munin_packages | default(munin_default_packages) }}"
-
 - name: Include OS-specific variables.
   include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
     - "{{ ansible_os_family }}.yml"
+
+- name: gather required munin packages
+  set_fact:
+    munin_required_packages: "{{ munin_packages | default(munin_default_packages) }}"
 
 - name: Install required packages for munin.
   package: "name={{ munin_required_packages }} state=present"
