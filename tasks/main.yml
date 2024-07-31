@@ -17,7 +17,7 @@
         name: dnf-plugins-core
         state: present
 
-    - name: Enable powertools for Rocky/AlmaLinux.
+    - name: Enable crb for Rocky/AlmaLinux.
       shell: |
         dnf config-manager --set-enabled crb
       changed_when: false
