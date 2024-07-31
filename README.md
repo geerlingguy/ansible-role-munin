@@ -15,7 +15,7 @@ If you would like to view munin's graphs and output via HTTP, you will need an H
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     munin_packages:
-      - python-passlib
+      - python3-passlib
       - munin
 
 Packages installed for Munin. If you are running Python 3, you should override this variable and set the first item to `python3-passlib`.
