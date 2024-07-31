@@ -12,15 +12,14 @@
 # See: https://github.com/geerlingguy/ansible-role-munin/issues/17
 - block:
 
-    - name: Ensure dnf-plugins are installed on RHEL 8+.
-      yum:
+    - name: Ensure dnf-plugins are installed on Rocky/AlmaLinux.
+      dnf:
         name: dnf-plugins-core
         state: present
 
-    - name: Enable powertools for RHEL 8+.
+    - name: Enable powertools for Rocky/AlmaLinux.
       shell: |
-        dnf config-manager --set-enabled powertools
-      register: dnf_module_enable
+        dnf config-manager --set-enabled crb
       changed_when: false
 
   when:
