@@ -12,16 +12,16 @@
 # See: https://github.com/geerlingguy/ansible-role-munin/issues/17
 - block:
 
-  - name: Ensure dnf-plugins are installed on RHEL 8+.
-    yum:
-      name: dnf-plugins-core
-      state: present
+    - name: Ensure dnf-plugins are installed on RHEL 8+.
+      yum:
+        name: dnf-plugins-core
+        state: present
 
-  - name: Enable powertools for RHEL 8+.
-    shell: |
-      dnf config-manager --set-enabled powertools
-    register: dnf_module_enable
-    changed_when: false
+    - name: Enable powertools for RHEL 8+.
+      shell: |
+        dnf config-manager --set-enabled powertools
+      register: dnf_module_enable
+      changed_when: false
 
   when:
     - ansible_os_family == 'RedHat'
@@ -59,5 +59,5 @@
     state: "{{ munin_cron_job }}"
     regexp: "^\\*/5 \\* \\* \\* \\*"
     line: "*/5 * * * *     munin if [ -x /usr/bin/munin-cron ]; then /usr/bin/munin-cron; fi"
-    create: yes
+    create: true
     mode: 0644
