@@ -9,6 +9,24 @@
   set_fact:
     munin_required_packages: "{{ munin_packages | default(munin_default_packages) }}"
 
+# See: https://github.com/geerlingguy/ansible-role-munin/issues/17
+- block:
+
+  - name: Ensure dnf-plugins are installed on RHEL 8+.
+    yum:
+      name: dnf-plugins-core
+      state: present
+
+  - name: Enable powertools for RHEL 8+.
+    shell: |
+      dnf config-manager --set-enabled powertools
+    register: dnf_module_enable
+    changed_when: false
+
+  when:
+    - ansible_os_family == 'RedHat'
+    - ansible_distribution_major_version | int >= 8
+
 - name: Install required packages for munin.
   package:
     name: "{{ munin_required_packages }}"
