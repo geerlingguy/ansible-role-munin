@@ -1,6 +1,6 @@
 # Ansible Role: Munin
 
-[![CI](https://github.com/geerlingguy/ansible-role-munin/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-munin/actions?query=workflow%3ACI)
+[![CI](https://github.com/geerlingguy/ansible-role-munin/actions/workflows/ci.yml/badge.svg)](https://github.com/geerlingguy/ansible-role-munin/actions/workflows/ci.yml)
 
 Installs munin, a monitoring system, on RedHat/CentOS/Rocky Linux or Debian/Ubuntu Linux servers.
 
