@@ -44,6 +44,12 @@
     - src: hosts.conf.j2
       dest: "{{ munin_conf_d_directory }}/hosts.conf"
 
+- name: Ensure munin local.conf is removed (if configured).
+  file:
+    path: "{{ munin_conf_d_directory }}/local.conf"
+    state: absent
+  when: munin_local_conf_remove
+
 - name: Create munin user via htpasswd.
   htpasswd:
     create: true

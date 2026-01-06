@@ -14,6 +14,11 @@ If you would like to view munin's graphs and output via HTTP, you will need an H
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
+    munin_conf_d_directory: /etc/munin/conf.d
+    munin_local_conf_remove: false
+
+Configuration options; in some installations, a `local.conf` file is added, which is not managed by this role. You can set `munin_local_conf_remove` to `true` to remove it.
+
     munin_packages:
       - python3-passlib
       - munin
