@@ -51,7 +51,7 @@
   when: munin_local_conf_remove
 
 - name: Create munin user via htpasswd.
-  htpasswd:
+  community.general.htpasswd:
     create: true
     name: "{{ munin_admin_user }}"
     password: "{{ munin_admin_password }}"

@@ -8,6 +8,10 @@ Installs munin, a monitoring system, on RedHat/CentOS/Rocky Linux or Debian/Ubun
 
 If you are running a RedHat-based distribution, you need to install the EPEL repository, which can be simply installed via the `geerlingguy.repo-epel` role.
 
+This role uses `community.general.htpasswd` to manage the Munin HTTP basic authentication file. If you are running with `ansible-core` instead of the full Ansible package, install the `community.general` collection before applying the role:
+
+    ansible-galaxy collection install community.general
+
 If you would like to view munin's graphs and output via HTTP, you will need an HTTP server like Apache or Nginx running.
 
 ## Role Variables
